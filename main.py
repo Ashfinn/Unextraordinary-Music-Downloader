@@ -1,5 +1,5 @@
 import customtkinter
-import mudopy
+import youtube_dl
 
 customtkinter.set_appearance_mode("Dark")
 customtkinter.set_appearance_mode("Blue")
@@ -7,14 +7,10 @@ customtkinter.set_appearance_mode("Blue")
 root = customtkinter.CTk()
 root.geometry("500x300")
 
-mudopy.Path("chromedriver/chromedriver.exe") 
-mudopy.download_path(r"songs/") 
-
 
 def download():
-    track = entryTrack.get()
-    artist = entryArtist.get()
-    return mudopy.download(str(track),str(artist))
+
+    return 
 
 frame = customtkinter.CTkFrame(master=root)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
