@@ -1,14 +1,37 @@
-from tkinter import *
+import customtkinter
 import mudopy
 
-root = Tk()
-myLabel = Label(root, text="Unextraordinary Music Downloader").grid(row='0', column='0')
+customtkinter.set_appearance_mode("Dark")
+customtkinter.set_appearance_mode("Blue")
 
-Label2 = Label(root, text="Enter Your Music Name").grid(row="1",column='0')
-name = Entry(root)
-name.grid(row='2',column='0')
-linkButton = Button(root, text='Go')
-linkButton.grid(row='2', column='1')
+root = customtkinter.CTk()
+root.geometry("500x300")
 
+mudopy.Path("chromedriver/chromedriver.exe") 
+mudopy.download_path(r"songs/") 
+
+
+def download():
+    track = entryTrack.get()
+    artist = entryArtist.get()
+    return mudopy.download(track,artist)
+
+frame = customtkinter.CTkFrame(master=root)
+frame.pack(pady=20, padx=60, fill="both", expand=True)
+
+label = customtkinter.CTkLabel(master=frame, text="Download Your Desired Music", font=("Roboto", 24))
+label.pack(pady=12,padx=10)
+
+description = customtkinter.CTkLabel(master=frame, text="Just write the name of the song and see the magic")
+description.pack(pady=12,padx=10)
+
+entryTrack = customtkinter.CTkEntry(master=frame, placeholder_text="Track Name")
+entryTrack.pack(pady=6, padx=10)
+
+entryArtist = customtkinter.CTkEntry(master=frame, placeholder_text="Artist Name")
+entryArtist.pack(pady=6, padx=10)
+
+button = customtkinter.CTkButton(master=frame, text="Download", command=download)
+button.pack(pady=12,padx=10)
 
 root.mainloop()
