@@ -14,7 +14,7 @@ mudopy.download_path(r"songs/")
 def download():
     track = entryTrack.get()
     artist = entryArtist.get()
-    return mudopy.download(track,artist)
+    return mudopy.download(str(track),str(artist))
 
 frame = customtkinter.CTkFrame(master=root)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
